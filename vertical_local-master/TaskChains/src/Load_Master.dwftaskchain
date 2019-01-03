@@ -1,1 +1,0 @@
-{"taskList":{"1":{"inline":{"type":"START","taskGroup":"com.sap.dwf.toe.executionControl"}},"2":{"inline":{"type":"SUB","taskGroup":"com.sap.dwf.toe.executionControl","description":"Master Data","parameterValues":[{"id":"taskChainId","value":"DataWareHouse.Processes#Load_NDSO_and_Activate"}]},"preconditions":[{"from":"1","status":"NEUTRAL"}]}}}
