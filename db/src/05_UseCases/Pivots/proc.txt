@@ -1,0 +1,70 @@
+DO
+BEGIN
+
+declare cursor c_1 for SELECT
+	"Material",
+	"Characteristic",
+	"Value"
+FROM "Pivot_Source";
+
+declare row_id integer=0;
+declare v_material nvarchar(50);
+declare v_characteristic nvarchar(50);
+declare v_value nvarchar(5000)='';
+
+create local temporary table #t_result (m nvarchar(50), c nvarchar(50), v nvarchar(50));
+
+for row_id as c_1 do
+	if v_material!=row_id."Material" or v_characteristic!=row_id."Characteristic"  then
+		v_value='';
+	end if;
+	
+	v_material=row_id."Material";
+	v_characteristic=row_id."Characteristic";
+	
+	v_value=v_value || row_id."Value" || ';';
+	upsert #t_result values (v_material, v_characteristic, v_value) where m=row_id."Material" and c=row_id."Characteristic";
+	
+end for;
+
+select * from #t_result;
+
+drop table #t_result;
+
+END
+
+create or replace procedure p_pivot (
+	IN inTab TABLE (material nvarchar(50), characteristic nvarchar(50), val nvarchar(50)),
+	OUT outTab TABLE (material nvarchar(50), characteristic nvarchar(50), val nvarchar(50))
+)
+AS
+BEGIN
+
+declare cursor c_1 for SELECT
+material, characteristic, val FROM :inTab;
+
+declare row_id integer=0;
+declare v_material nvarchar(50);
+declare v_characteristic nvarchar(50);
+declare v_value nvarchar(5000)='';
+
+create local temporary table #pivot_temp (material nvarchar(50), characteristic nvarchar(50), val nvarchar(50));
+
+for row_id as c_1 do
+	if v_material!=row_id.material or v_characteristic!=row_id.characteristic  then
+		v_value='';
+	end if;
+	
+	v_material=row_id.material;
+	v_characteristic=row_id.characteristic;
+	
+	v_value=v_value || row_id.val || ';';
+	upsert #pivot_temp values (v_material, v_characteristic, v_value) where material=row_id.material and characteristic=row_id.characteristic;
+	
+end for;
+
+outTab = select * from #pivot_temp;
+
+drop table #pivot_temp;
+
+END

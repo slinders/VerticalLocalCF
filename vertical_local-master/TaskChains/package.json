@@ -1,0 +1,25 @@
+{
+	"name": "dwf-module",
+	"version": "0.0.1",
+	"description": "DWF Module",
+	"repository": {},
+	"license": "",
+	"dependencies": {
+		"@sap/dwf-deploy": "~2.2.3"
+	},
+	"devDependencies": {
+		"@sap/dwf-generator": "~2.2.3"
+	},
+	"dwfConfig": {
+		"hdb-module": {
+			"path": "../Persistence"
+		}
+	},
+	"files": [],
+	"scripts": {
+		"start": "node node_modules/@sap/dwf-deploy/main.js"
+	},
+	"engines": {
+		"node": ">=6.9.0"
+	}
+}

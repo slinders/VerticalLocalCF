@@ -1,0 +1,19 @@
+{
+	"role":{
+		"name": "DataWareHouse.Persistence.roles::TeamBrazilDeveloper",
+
+		"object_privileges":[
+			{   
+				"name": "C_TotalSales",
+				"type": "VIEW",
+				"privileges": [ "SELECT" ]
+			}
+		],
+		
+		"schema_analytic_privileges": [
+			{
+				"privileges":[ "AP_Brazil" ]
+			}		
+		]
+	}
+}

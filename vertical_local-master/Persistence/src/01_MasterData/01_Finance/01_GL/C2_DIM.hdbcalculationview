@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="C2_DIM" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="C2_DIM"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SourceData.EPM::SNWD_SO">
+    <resourceUri>SourceData.EPM::SNWD_SO</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="SourceData.EPM::SNWD_SO">
+  <attributes>
+    <attribute id="BILLING_STATUS" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLING_STATUS"/>
+      <keyMapping columnObjectName="SNWD_SO" columnName="BILLING_STATUS"/>
+    </attribute>
+    <attribute id="CHANGED_AT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_AT"/>
+      <keyMapping columnObjectName="SNWD_SO" columnName="CHANGED_AT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario> 

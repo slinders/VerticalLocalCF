@@ -1,0 +1,5 @@
+entity Pivot_Source {
+	key Material: String(50);
+	key Characteristic: String (50);
+	key Value: String (50);
+}

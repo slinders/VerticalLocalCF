@@ -1,0 +1,7 @@
+namespace NDSO;
+
+entity NDSO_date{
+ id : Integer;
+ts : UTCTimestamp;
+
+};

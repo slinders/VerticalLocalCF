@@ -1,0 +1,18 @@
+{
+   "role":{
+      "name":"DataWareHouse.Persistence.roles::developer_full_privileges_with_grant#",
+      "schema_analytic_privileges":[
+         {
+            "privileges":["AP_FullPrivs"]
+         }
+      ],
+      "schema_privileges":[
+         {
+
+            "privileges":["INSERT", "UPDATE", "DELETE", "EXECUTE", "CREATE TEMPORARY TABLE", "SELECT CDS METADATA"],
+            "privileges_with_grant_option":[ "SELECT" ] 
+         }
+        
+      ]
+   }
+} 

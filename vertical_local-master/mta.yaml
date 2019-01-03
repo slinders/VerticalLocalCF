@@ -1,0 +1,59 @@
+_schema-version: '2.0'
+ID: vertical_local
+description: vertical_local
+version: 0.0.1
+
+modules:
+ - name:  vertical_local-TaskChains
+   type: dwf
+#   parameters:
+#      app-name: vertical_local-TaskChains
+   path: TaskChains
+   requires:
+      - name: vertical_local-dws
+
+ - name: vertical_local-Backend
+   type: nodejs
+#   parameters:
+#      app-name: vertical_local-Backend
+   path: Backend
+   requires:
+      - name: vertical_local-Persistence
+      - name: vertical_local-dws
+   properties:
+     API_END_POINT: "${xs-api-url}"
+   provides:
+    - name:  vertical_local-Backend
+      properties:
+       service_url: ${default-url}
+
+ - name: vertical_local-Persistence
+   type: hdb
+#   parameters:
+#      app-name: vertical_local-Persistence
+   path: Persistence
+   requires:
+    - name: vertical_local-container
+      properties: 
+        TARGET_CONTAINER: ~{hdi-container-service}
+
+resources:
+
+ - name: vertical_local-dws
+   properties:
+      dwf-edw-client-name: ${service-name}
+#      dwf-edw-client-name: vertical_local-dws
+   parameters:
+      service-name: vertical_local-dws
+   type: com.sap.xs.dwf-edw-client
+ - name: vertical_local-container
+   properties:
+      hdi-container-service: ${service-name}
+#      hdi-container-name: vertical_local-container
+   parameters:
+      config:
+         schema: vertical_local
+#         makeUniqueName: false
+#      service-name: vertical_local-container
+   type: com.sap.xs.hdi-container
+
