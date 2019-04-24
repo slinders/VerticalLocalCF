@@ -1,0 +1,74 @@
+{
+  "namespace": "EPM",
+  "definitions": {
+    "EPM.Books": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "indexNo": 1,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "ID"
+        },
+        "title": {
+          "indexNo": 2,
+          "type": "cds.String",
+          "@cds.persistence.name": "TITLE"
+        },
+        "stock": {
+          "indexNo": 3,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "STOCK"
+        }
+      },
+      "@cds.persistence.name": "EPM_BOOKS"
+    },
+    "CatalogService": {
+      "kind": "service",
+      "@source": "srv/cat-service.cds"
+    },
+    "CatalogService.Books": {
+      "kind": "entity",
+      "source": "EPM.Books",
+      "@readonly": true,
+      "elements": {
+        "ID": {
+          "origin": "EPM.Books..ID",
+          "indexNo": 1,
+          "value": {
+            "=": "Books.ID"
+          },
+          "key": true,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "ID"
+        },
+        "title": {
+          "origin": "EPM.Books..title",
+          "indexNo": 2,
+          "value": {
+            "=": "Books.title"
+          },
+          "type": "cds.String",
+          "@cds.persistence.name": "TITLE"
+        },
+        "stock": {
+          "origin": "EPM.Books..stock",
+          "indexNo": 3,
+          "value": {
+            "=": "Books.stock"
+          },
+          "type": "cds.Integer",
+          "@cds.persistence.name": "STOCK"
+        }
+      },
+      "@Capabilities.DeleteRestrictions.Deletable": false,
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.UpdateRestrictions.Updatable": false,
+      "@cds.persistence.name": "CATALOGSERVICE_BOOKS"
+    }
+  },
+  "version": {
+    "csn": "0.1.0"
+  },
+  "@sql_mapping": "plain"
+}
