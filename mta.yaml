@@ -12,8 +12,10 @@ modules:
 resources:
  - name: hdi_db
    parameters:
+      service-name: verticallocal
       config:
          schema: verticallocal
+         makeUniqueName: false
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
