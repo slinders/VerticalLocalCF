@@ -1,5 +1,5 @@
 using EPM as EPM from '../db/data-model';
 
 service CatalogService {
-    @readonly entity Books as projection on EPM.Books;
+    @readonly entity Address as projection on EPM.Address;
 }

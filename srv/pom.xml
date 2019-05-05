@@ -6,11 +6,11 @@
     <artifactId>projects-parent-odatav2</artifactId>
     <version>1.28.1</version>
   </parent>
-  <artifactId>CAPtemplate-srv</artifactId>
+  <artifactId>verticallocal-srv</artifactId>
   <groupId>sap</groupId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>CAPtemplate-srv</name>
+  <name>verticallocal-srv</name>
   <properties>
     <packageName>my.company</packageName>
   </properties>

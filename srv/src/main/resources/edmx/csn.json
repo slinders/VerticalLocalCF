@@ -1,70 +1,206 @@
 {
   "namespace": "EPM",
   "definitions": {
-    "EPM.Books": {
+    "EPM.Address": {
       "kind": "entity",
       "elements": {
-        "ID": {
+        "NODE_KEY": {
           "key": true,
           "indexNo": 1,
-          "type": "cds.Integer",
-          "@cds.persistence.name": "ID"
+          "type": "cds.Binary",
+          "notNull": true,
+          "length": 16,
+          "@cds.persistence.name": "NODE_KEY"
         },
-        "title": {
+        "CITY": {
           "indexNo": 2,
           "type": "cds.String",
-          "@cds.persistence.name": "TITLE"
+          "length": 40,
+          "@cds.persistence.name": "CITY"
         },
-        "stock": {
+        "POSTAL_CODE": {
           "indexNo": 3,
-          "type": "cds.Integer",
-          "@cds.persistence.name": "STOCK"
+          "type": "cds.String",
+          "length": 10,
+          "@cds.persistence.name": "POSTAL_CODE"
+        },
+        "STREET": {
+          "indexNo": 4,
+          "type": "cds.String",
+          "length": 60,
+          "@cds.persistence.name": "STREET"
+        },
+        "BUILDING": {
+          "indexNo": 5,
+          "type": "cds.String",
+          "length": 10,
+          "@cds.persistence.name": "BUILDING"
+        },
+        "COUNTRY": {
+          "indexNo": 6,
+          "type": "cds.String",
+          "length": 3,
+          "@cds.persistence.name": "COUNTRY"
+        },
+        "ADDRESS_TYPE": {
+          "indexNo": 7,
+          "type": "cds.String",
+          "length": 2,
+          "@cds.persistence.name": "ADDRESS_TYPE"
+        },
+        "VAL_START_DATE": {
+          "indexNo": 8,
+          "type": "cds.Timestamp",
+          "@cds.persistence.name": "VAL_START_DATE"
+        },
+        "VAL_END_DATE": {
+          "indexNo": 9,
+          "type": "cds.Timestamp",
+          "@cds.persistence.name": "VAL_END_DATE"
+        },
+        "LATITUDE": {
+          "indexNo": 10,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 12,
+          "@cds.persistence.name": "LATITUDE"
+        },
+        "LONGITUDE": {
+          "indexNo": 11,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 12,
+          "@cds.persistence.name": "LONGITUDE"
         }
       },
-      "@cds.persistence.name": "EPM_BOOKS"
+      "@cds.persistence.name": "EPM_ADDRESS"
     },
     "CatalogService": {
       "kind": "service",
       "@source": "srv/cat-service.cds"
     },
-    "CatalogService.Books": {
+    "CatalogService.Address": {
       "kind": "entity",
-      "source": "EPM.Books",
+      "source": "EPM.Address",
       "@readonly": true,
       "elements": {
-        "ID": {
-          "origin": "EPM.Books..ID",
+        "NODE_KEY": {
+          "origin": "EPM.Address..NODE_KEY",
           "indexNo": 1,
           "value": {
-            "=": "Books.ID"
+            "=": "Address.NODE_KEY"
           },
           "key": true,
-          "type": "cds.Integer",
-          "@cds.persistence.name": "ID"
+          "type": "cds.Binary",
+          "notNull": true,
+          "length": 16,
+          "@cds.persistence.name": "NODE_KEY"
         },
-        "title": {
-          "origin": "EPM.Books..title",
+        "CITY": {
+          "origin": "EPM.Address..CITY",
           "indexNo": 2,
           "value": {
-            "=": "Books.title"
+            "=": "Address.CITY"
           },
           "type": "cds.String",
-          "@cds.persistence.name": "TITLE"
+          "length": 40,
+          "@cds.persistence.name": "CITY"
         },
-        "stock": {
-          "origin": "EPM.Books..stock",
+        "POSTAL_CODE": {
+          "origin": "EPM.Address..POSTAL_CODE",
           "indexNo": 3,
           "value": {
-            "=": "Books.stock"
+            "=": "Address.POSTAL_CODE"
           },
-          "type": "cds.Integer",
-          "@cds.persistence.name": "STOCK"
+          "type": "cds.String",
+          "length": 10,
+          "@cds.persistence.name": "POSTAL_CODE"
+        },
+        "STREET": {
+          "origin": "EPM.Address..STREET",
+          "indexNo": 4,
+          "value": {
+            "=": "Address.STREET"
+          },
+          "type": "cds.String",
+          "length": 60,
+          "@cds.persistence.name": "STREET"
+        },
+        "BUILDING": {
+          "origin": "EPM.Address..BUILDING",
+          "indexNo": 5,
+          "value": {
+            "=": "Address.BUILDING"
+          },
+          "type": "cds.String",
+          "length": 10,
+          "@cds.persistence.name": "BUILDING"
+        },
+        "COUNTRY": {
+          "origin": "EPM.Address..COUNTRY",
+          "indexNo": 6,
+          "value": {
+            "=": "Address.COUNTRY"
+          },
+          "type": "cds.String",
+          "length": 3,
+          "@cds.persistence.name": "COUNTRY"
+        },
+        "ADDRESS_TYPE": {
+          "origin": "EPM.Address..ADDRESS_TYPE",
+          "indexNo": 7,
+          "value": {
+            "=": "Address.ADDRESS_TYPE"
+          },
+          "type": "cds.String",
+          "length": 2,
+          "@cds.persistence.name": "ADDRESS_TYPE"
+        },
+        "VAL_START_DATE": {
+          "origin": "EPM.Address..VAL_START_DATE",
+          "indexNo": 8,
+          "value": {
+            "=": "Address.VAL_START_DATE"
+          },
+          "type": "cds.Timestamp",
+          "@cds.persistence.name": "VAL_START_DATE"
+        },
+        "VAL_END_DATE": {
+          "origin": "EPM.Address..VAL_END_DATE",
+          "indexNo": 9,
+          "value": {
+            "=": "Address.VAL_END_DATE"
+          },
+          "type": "cds.Timestamp",
+          "@cds.persistence.name": "VAL_END_DATE"
+        },
+        "LATITUDE": {
+          "origin": "EPM.Address..LATITUDE",
+          "indexNo": 10,
+          "value": {
+            "=": "Address.LATITUDE"
+          },
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 12,
+          "@cds.persistence.name": "LATITUDE"
+        },
+        "LONGITUDE": {
+          "origin": "EPM.Address..LONGITUDE",
+          "indexNo": 11,
+          "value": {
+            "=": "Address.LONGITUDE"
+          },
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 12,
+          "@cds.persistence.name": "LONGITUDE"
         }
       },
       "@Capabilities.DeleteRestrictions.Deletable": false,
       "@Capabilities.InsertRestrictions.Insertable": false,
       "@Capabilities.UpdateRestrictions.Updatable": false,
-      "@cds.persistence.name": "CATALOGSERVICE_BOOKS"
+      "@cds.persistence.name": "CATALOGSERVICE_ADDRESS"
     }
   },
   "version": {

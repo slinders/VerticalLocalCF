@@ -6,17 +6,25 @@
   <edmx:DataServices m:DataServiceVersion="2.0">
     <Schema Namespace="CatalogService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
-        <EntitySet Name="Books" EntityType="CatalogService.Books"/>
+        <EntitySet Name="Address" EntityType="CatalogService.Address"/>
       </EntityContainer>
-      <EntityType Name="Books">
+      <EntityType Name="Address">
         <Key>
-          <PropertyRef Name="ID"/>
+          <PropertyRef Name="NODE_KEY"/>
         </Key>
-        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
-        <Property Name="title" Type="Edm.String"/>
-        <Property Name="stock" Type="Edm.Int32"/>
+        <Property Name="NODE_KEY" Type="Edm.Binary" MaxLength="16" Nullable="false"/>
+        <Property Name="CITY" Type="Edm.String" MaxLength="40"/>
+        <Property Name="POSTAL_CODE" Type="Edm.String" MaxLength="10"/>
+        <Property Name="STREET" Type="Edm.String" MaxLength="60"/>
+        <Property Name="BUILDING" Type="Edm.String" MaxLength="10"/>
+        <Property Name="COUNTRY" Type="Edm.String" MaxLength="3"/>
+        <Property Name="ADDRESS_TYPE" Type="Edm.String" MaxLength="2"/>
+        <Property Name="VAL_START_DATE" Type="Edm.DateTimeOffset"/>
+        <Property Name="VAL_END_DATE" Type="Edm.DateTimeOffset"/>
+        <Property Name="LATITUDE" Type="Edm.Decimal" Scale="12" Precision="15"/>
+        <Property Name="LONGITUDE" Type="Edm.Decimal" Scale="12" Precision="15"/>
       </EntityType>
-      <Annotations Target="CatalogService.EntityContainer/Books" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="CatalogService.EntityContainer/Address" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record Type="Capabilities.DeleteRestrictionsType">
             <PropertyValue Property="Deletable" Bool="false"/>
